@@ -1,0 +1,11 @@
+/*注释字体*/
+.note {
+    font-size: 7px;
+    color: #ACACAC;
+    font-style: italic;
+}
+/*标题*/
+.title {
+    font-weight: bold;
+    text-align: center;
+}
