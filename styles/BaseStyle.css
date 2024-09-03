@@ -4,18 +4,15 @@ body {
     font-size: 15px;
 }
 /*上栏*/
-    #top-nav {
-    background-color: #5E81F2;
+#top-nav {
     padding: 0;
     margin: 0;
-    position: absolute;
-    right: 10px;
-    top: 70px;
     list-style: none;
 }
 #top-nav li {
     border: 1px, solid, #ACACAC;
     float: left;
+    background-color: #5E81F2;
 }
 #top-nav a {
     color: white;
@@ -31,7 +28,7 @@ body {
     background-color: #18289E;
 }
 /*下栏*/
-    .bottom-bar ul {
+.bottom-bar ul {
     position: relative;
     bottom: 0px;
     float: left;
@@ -49,12 +46,10 @@ body {
     font-size: 7px;
 }
 /*返回*/
-    #back {
+#back {
     color: #ACACAC;
     font-size: 5px;
     text-align: center;
-    position: relative;
-    bottom: 5px;
 }
 #back a {
     text-decoration: none;
