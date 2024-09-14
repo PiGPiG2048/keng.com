@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--meta-->
+    <meta charset = "utf-8">
+    <meta name = "author" content = "[pink]PiGPiG2048">
+    <meta name = "description" content = "关于圆锥曲线的定值问题（一）">
+    <meta name = "keywords" content = "坑因工业, [pink]PiGPiG2048, 圆锥曲线">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+    <title>关于圆锥曲线的定值问题（一）</title>
+    <!--styles-->
+    <link rel="stylesheet" type="text/css" href="https://pigpig2048.github.io/keng.com/styles/BaseStyle.css">
+    <link rel="stylesheet" type="text/css" href="https://pigpig2048.github.io/keng.com/styles/FontStyle.css">
+    <style>
+    .button {
+    background-color: #5E81F2;
+    border: 3px soild white;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 12px;
+}}
+ 
+.button:hover {
+    background-color: #18289E; /* Green */
+    color: white;
+}
+...
+</style>
+</head>
+<body>
+    <!--上面的栏-->
+    <a href = "#"><img src = "https://pigpig2048.github.io/keng.com/images/logo.png" alt = "坑因工业" width = "96" height = "32"/></a>
+    <ul id = "top-nav">
+        <li><a href="https://pigpig2048.github.io/keng.com/html/games.html">游戏区</a></li>
+		<li><a href="https://pigpig2048.github.io/keng.com/html/articles.html">灌水区</a></li>
+		<li><a href="https://pigpig2048.github.io/keng.com/html/tools.html">工具箱</a></li>
+		<li><a href="https://pigpig2048.github.io/keng.com/html/download.html">资源包</a></li>
+		<li><a href="https://pigpig2048.github.io/keng.com/html/clock.html">时钟区</a></li>
+		<li><a href="https://pigpig2048.github.io/keng.com/html/sign.html">登录区</a></li>
+	</ul>
+	<div>您抽到了<p class = "warning">???</p>号</div>
+        <input class = "button"type="button" value="点击抽取学号" onclick="beClick()">
+        <script>
+        let studentNum = +prompt("请输入学生数量")
+        const getRandom = (min, max) => {
+            return Math.floor(Math.random() * (max - min)) + min
+        }
+        function beClick(){
+            let random = getRandom(1,studentNum)
+            const warning = document.querySelector(".warning")
+            warning.innerHTML = random
+        }
+        </script>
+	<!--下面的栏-->
+	<div class = "bottom-bar">
+	    <ul>
+	        <li class = "bar-title">关于网页</li>
+	        <li><a href = "https://github.com/PiGPiG2048/keng.com">github仓库</a></li>
+	        <li><a href = "https://m.bilibili.com/space/642620293">猪猪b站</a></li>
+	    </ul>
+	</div>
+	<div class = "bottom-bar">
+	    <ul>
+	        <li class = "bar-title">支持与帮助</li>
+	        <li><a href = "">....</a></li>
+	        <li><a href = "">....</a></li>
+	    </ul>
+	</div>
+	<p id = "back"><a href = "#">回到顶部</a>|<a href = "index.html">回到首页</a></p>
+</body>
+</html>
