@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--meta-->
+    <meta charset = "utf-8">
+    <meta name = "author" content = "[pink]PiGPiG2048">
+    <meta name = "description" content = "坑因工业，让您的生活更加精彩。">
+    <meta name = "keywords" content = "坑因工业, [pink]PiGPiG2048">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+    <title>坑因工业</title>
+    <style>
+        body {
+            background-color: #000000;
+            height: 1080px;
+            width: 720px;
+        }
+        .bg {
+            width: 720px;
+            height: 800px;
+            margin: auto;
+            text-align: center;
+            position: absolute;
+            top: 140px;
+            left: 0px;
+        }
+        #startSense {
+            background-color: #555555;
+        }
+        #mainSense {
+            background-color: #ffffff;
+            display: none;
+        }
+        #deadSense {
+            background-color: #555555;
+            display: none;
+        }
+        #counter {
+            color: #FF9D00;
+            font-size: 40px;
+            position: absolute;
+            top:30px;
+            left: 30px;
+        }
+        #target {
+            height: 60px;
+            width: 60px;
+            background-color: #FF9D00;
+            position: absolute;
+            top: 370px;
+            left: 330px;
+        }
+        .barrier {
+            height: 60px;
+            width: 60px;
+            background-color: #FF0000;
+            position: absolute;
+            top: 370px;
+            left: 330px;
+            display: none;
+        }
+        #healthBar {
+            color: #FF9D00;
+            font-size: 40px;
+            position: absolute;
+            top: 740px;
+            left: 30px;
+        }
+        button {
+            width: 80px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <!--开始画面-->
+    <div class = "bg" id = "startSense" style = "{padding: auto;}">
+        <p style = "font-size: 20px; font-weight: bold;">打方块</p><br />
+        <button id = "startBtn">开始</button>
+    </div>
+    <!--背景(游戏主场景)-->
+    <div class = "bg" id = "mainSense">
+        <span id = "counter">
+            0
+        </span>
+        <span id = "healthBar">
+            3
+        </span>
+        <div class = "barrier"></div>
+        <div class = "barrier"></div>
+        <div class = "barrier"></div>
+        <div id = "target"></div>
+    </div>
+    <!--死亡结算画面-->
+    <div class = "bg" id = "deadSense">
+        <p style = "color: #FF0000; font-size: 170px; font-weight: bold;">蔡</p>
+        <button id = "readyBtn">重来</button>
+        <button id = "exitBtn">退出</button>
+    </div>
+    <script>
+        //senses
+        const startSense = document.querySelector("#startSense")
+        const mainSense = document.querySelector("#mainSense")
+        const deadSense = document.querySelector("#deadSense")
+        //buttons
+        const startBtn = document.querySelector("#startBtn")
+        const readyBtn = document.querySelector("#readyBtn")
+        const exitBtn = document.querySelector("#exitBtn")
+        //target
+        const target = document.querySelector("#target")
+        const barriers = document.querySelectorAll(".barrier")
+        //counter
+        const counter = document.querySelector("#counter")
+        let health = 3
+        
+        const getRandom = (min, max) => {
+            return Math.floor(Math.random() * (max - min)) + min
+        }
+        
+        const setPosition = obj => {
+            obj.style.top = getRandom(80, 740) + "px"
+            obj.style.left = getRandom(0, 660) + "px"
+        }
+        
+        startBtn.addEventListener("click", () => {
+            startSense.style.display = "none"
+            mainSense.style.display = "block"
+        })
+        
+        readyBtn.addEventListener("click", () => {
+            deadSense.style.display = "none"
+            mainSense.style.display = "block"
+            document.querySelector("#healthBar").innerHTML = 3
+            health = 3
+            
+            target.style.top = "370px"
+            target.style.left = "330px"
+            
+            counter.innerHTML = 0
+        })
+        
+        exitBtn.addEventListener("click", () => {
+            deadSense.style.display = "none"
+            startSense.style.display = "block"
+            document.querySelector("#healthBar").innerHTML = 3
+            health = 3
+            
+            target.style.top = "370px"
+            target.style.left = "330px"
+            
+            counter.innerHTML = 0
+        })
+        
+        mainSense.addEventListener("click", () => {
+            target.style.top = getRandom(80, 740) + "px"
+            target.style.left = getRandom(0, 660) + "px"
+        })
+        mainSense.addEventListener("click", () => {
+            health -= 1
+            document.querySelector("#healthBar").innerHTML = health
+            if(health <= 0) {
+                deadSense.style.display = "block"
+                mainSense.style.display = "none"
+            }
+        })
+        target.addEventListener("click", (e) => {
+            counter.innerHTML = +counter.innerHTML + 1
+            setPosition(target)
+            if(+counter.innerHTML >= 50) {
+                for(let i = 0;i < barriers.length;i++){
+                    barriers[i].style.display = "block";
+                    setPosition(barriers[i])
+                }
+            }
+            e.stopPropagation()
+        })
+        
+        
+    </script>
+</body>
+</html>
